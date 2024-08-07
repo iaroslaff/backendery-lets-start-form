@@ -17,7 +17,7 @@ use shuttle_runtime::{
 };
 use tower_http::cors::{Any, CorsLayer};
 
-use crate::api::handlers::{alive_handler, send_email_handler};
+use crate::api::handlers::{index_handler, send_email_handler};
 use crate::configs::AppConfigs;
 use crate::errors::SecretError;
 
@@ -111,7 +111,7 @@ async fn axum(#[ShuttleSecrets] store: ShuttleSecretStore) -> ShuttleAxum {
     let state = Arc::new(AppState { configs, secrets });
 
     let router: Router = Router::new()
-        .route("/api/v1/alive", get(alive_handler))
+        .route("/", get(index_handler))
         .route("/api/v1/send-email", post(send_email_handler))
         .layer(cors_layer)
         .with_state(state);

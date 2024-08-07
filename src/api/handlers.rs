@@ -15,7 +15,7 @@ use super::{ApiJsonRequest, ApiJsonResponse};
 use crate::models::LetsStartForm;
 use crate::AppState;
 
-pub async fn alive_handler() -> Result<Json<ApiJsonResponse>, ApiErrorResponse> {
+pub async fn index_handler() -> Result<Json<ApiJsonResponse>, ApiErrorResponse> {
     let response = ApiJsonResponse {
         msg: String::from("The server is alive and well :)"),
         ..Default::default()
