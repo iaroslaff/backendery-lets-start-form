@@ -1,0 +1,4 @@
+# Declare files that should be included in deployment
+assets = ["configs/*"]
+# App name
+name = "backendery-lets-start-form"
