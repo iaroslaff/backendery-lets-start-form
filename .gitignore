@@ -3,6 +3,7 @@
 # will have compiled files and executables
 .shuttle-storage
 Secrets*.toml
+configs/Default.toml
 debug/
 target/
 
