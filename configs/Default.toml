@@ -1,0 +1,13 @@
+# Cors
+allow_cors_origins = ["backendery.dev", "localhost"]
+
+# Message
+message_from_email = "Backendery | Digital Agency <hey@backendery.dev>"
+message_to_email = "Backendery | Digital Agency <lets-get-started@backendery.dev>"
+
+# Retry
+retry_count = 3
+retry_timeout = 50
+
+# Smpt
+smtp_connection_timeout = 10000
