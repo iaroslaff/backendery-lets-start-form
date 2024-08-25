@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "name": "Attach to Backendery Send Email API",
+            "program": "${workspaceFolder}/target/debug/backendery-lets-start-form",
+            "request": "attach",
+            "type": "lldb"
+        }
+    ],
+    "version": "0.2.0"
+}
