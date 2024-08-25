@@ -1,0 +1,24 @@
+---
+name: Shuttle Deploy
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: shuttle
+    steps:
+      - uses: shuttle-hq/deploy-action@main
+        with:
+          cargo-shuttle-version: "0.46.0"
+          deploy-key: ${{ secrets.SHUTTLE_API_KEY }}
+          secrets: |
+            DDOG_AKEY = '${{ secrets.DATADOG_API_KEY }}'
+            DDOG_TAGS = '${{ secrets.DATADOG_TAGS }}'
+
+            SMTP_ADDR = '${{ secrets.SMTP_ADDR }}'
+            SMTP_AUTH = '${{ secrets.SMTP_AUTH }}'
