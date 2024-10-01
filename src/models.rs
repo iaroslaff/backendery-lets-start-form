@@ -1,8 +1,8 @@
 use serde::Deserialize;
 use validator::Validate;
 
-const FUNDING_MIN: u16 =  1_000;
-const FUNDING_MAX: u16 = 50_000;
+const BUDGET_MIN: u16 = 1_000;
+const BUDGET_MAX: u16 = 50_000;
 
 #[derive(Debug, Deserialize, Validate)]
 #[serde(rename_all = "camelCase")]
@@ -12,18 +12,18 @@ pub struct LetsStartForm {
     pub email: String,
 
     #[validate(range(
-        min = "FUNDING_MIN",
-        exclusive_max = "FUNDING_MAX",
+        min = "BUDGET_MIN",
+        exclusive_max = "BUDGET_MAX",
         message = "The value of the field goes out of range"
     ))]
-    pub funding_min: u16,
+    pub budget_min: u16,
 
     #[validate(range(
-        min = "FUNDING_MIN",
-        max = "FUNDING_MAX",
+        min = "BUDGET_MIN",
+        max = "BUDGET_MAX",
         message = "The value of the field goes out of range"
     ))]
-    pub funding_max: u16,
+    pub budget_max: u16,
 
     #[validate(length(
         min = 2,
@@ -38,18 +38,4 @@ pub struct LetsStartForm {
         message = "The length of the field goes out of bounds"
     ))]
     pub project_description: String,
-
-    #[validate(length(
-        min = 2,
-        max = 32,
-        message = "The length of the field goes out of bounds"
-    ))]
-    pub referral_source: String,
-
-    #[validate(length(
-        min = 2,
-        max = 32,
-        message = "The length of the field goes out of bounds"
-    ))]
-    pub represent: String,
 }
