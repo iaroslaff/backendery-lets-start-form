@@ -39,9 +39,8 @@ pub async fn send_email_handler(
         r#"
 Hey,
 
-I hope this message finds you well. My name is {}, and I represent {}.
-We came across your profile on {} and are impressed with your work. We would like to
-discuss a potential collaboration with you on an upcoming project.
+I hope this message finds you well. My name is {}.
+I would like to discuss a potential collaboration with you on an upcoming project.
 
 A brief overview of the project:
 • {}
@@ -55,11 +54,9 @@ Looking forward to your response.
 Regards.
         "#,
         request.name,
-        request.represent,
-        request.referral_source,
         request.project_description,
-        request.funding_min,
-        request.funding_max,
+        request.budget_min,
+        request.budget_max,
         request.email
     )
     .unwrap();
@@ -74,7 +71,7 @@ Regards.
     let message = match Message::builder()
         .from(Mailbox::from_str(configs.message_from_email.as_str()).unwrap())
         .to(Mailbox::from_str(configs.message_to_email.as_str()).unwrap())
-        .subject(String::from("Let's get started"))
+        .subject(String::from("Let's start"))
         .header(ContentType::TEXT_PLAIN)
         .body(letter_text)
     {
